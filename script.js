@@ -50,17 +50,39 @@ window.addEventListener('load', function(){
             this.aniamtionFrames = 5;
             this.frameDelay = 8;
             this.frameCount = 0;
+            this.direction = 1;
 
         }
         draw(context) {
+
             context.fillStyle = 'white';
             context.fillRect(this.x, this.y, this.width, this.height);
             context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height,
-             this.width, this.height, this.x, this.y, this.width, this.height);
-
-
-             
+                this.width, this.height, this.x, this.y, this.width, this.height);
         }
+
+        directionChange(value) {
+       
+        if (this.value != this.direction ) {
+            this.direction = value;
+            
+            console.log(value);
+            if(this.direction == 0) {
+                document.getElementById("playerImage").className = "leftDirection";
+              
+            }
+            if(this.direction == 1) {
+                document.getElementById("playerImage").className = "rightDirection";
+              
+            }
+
+            
+               console.log(value);
+        }
+
+
+        }
+
         jump() {
             if(!this.isJumping) {
                 this.yVelocity = this.jumpForce;
@@ -68,6 +90,10 @@ window.addEventListener('load', function(){
             }
         }
         update() {
+
+           
+
+
             // Vertical
             if (input.keys.indexOf("w") > -1) {
                 this.jump();
@@ -105,10 +131,17 @@ window.addEventListener('load', function(){
             // horizontal movement
             if ( input.keys.indexOf('d') > -1) {
                 this.speed = 5;
-   
+                if (this.direction != 1){
+                    this.directionChange(1);
+                 
+                }
+              
                            
             } else if (input.keys.indexOf('a') > -1) {
                 this.speed = -5;
+                if (this.direction != 0){
+                    this.directionChange(0);
+                }
             } else {
                 this.speed = 0;
                 this.frameX = 0
@@ -143,7 +176,7 @@ window.addEventListener('load', function(){
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
 
- 
+
     function animate() {
         ctx.clearRect(0,0, canvas.width, canvas.height);
         player.draw(ctx);

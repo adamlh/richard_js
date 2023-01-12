@@ -21,3 +21,27 @@ h2 {
     font-family: 'Courier New', Courier, monospace;
     font-size: 42px;
 }
+
+
+h1 {
+    font-family: 'SilkScreen';
+    font-size: 84px;
+    color: white;
+    text-align: center;
+    
+}
+
+
+#playerimage img  .leftDirection { transform: rotateX(180deg);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+#playerimage img .leftDirection {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
